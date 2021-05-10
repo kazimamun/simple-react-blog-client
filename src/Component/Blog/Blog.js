@@ -13,7 +13,15 @@ const Blog = () => {
 
     const handleSubmit= e =>{
         e.preventDefault();
-        console.log(post);
+        fetch('http://localhost:4000/blog/new', {
+            method: 'POST',
+            body: JSON.stringify(post),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
     };
 
     return (
